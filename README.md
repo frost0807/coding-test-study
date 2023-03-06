@@ -31,3 +31,9 @@
 ## 규칙
 
 - 매일 풀이한 문제 인증 관련 pull request는 가급적이면 자정 전까지 이루어져야 합니다.
+
+<br/>
+
+## 달성도
+
+[노션 달성도 기록 페이지](https://www.notion.so/23f32efdf6db46eca93470583a71be76?v=56c79387bfdb4dd18a98b93bd3a5e329)
