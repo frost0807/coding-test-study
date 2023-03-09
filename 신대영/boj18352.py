@@ -4,7 +4,6 @@ INF = int(1e9) # 무한을 의미하는 값으로 10억을 설정
 
 # 도시 n, 도로 m, 거리 k, 출발 도시 x
 n,m,k,x = map(int, input().split())
-
 # 각 노드별 연결되어 있는 노드를 담고 있는 리스트 
 graph = [[] for _ in range(n + 1)]
 

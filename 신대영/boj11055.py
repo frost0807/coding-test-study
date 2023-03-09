@@ -22,3 +22,4 @@ for i in range(1, n):
             dp[i] = max(dp[i], dp[j] + array[i])
 
 print(max(dp))
+
