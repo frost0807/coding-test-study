@@ -1,12 +1,12 @@
 """
-문제유형:
-문제링크:
-문제풀이:
+문제유형: 정렬, 브루트포스 알고리즘
+문제링크: https://www.acmicpc.net/problem/1895
+문제풀이: 3 X 3 픽셀을 뽑아서 리스트 정렬을 이용해서 중간값을 도출후 
+    1. 가로/세로 시작점을 받아서 3 X 3 픽셀를 루프를 돌면서 값을 도출후 정렬로 중간값을 구하는 함수를 생성
+    2. 3 X 3 픽셀이 최대로 움직일수 있는 입력받은 가로/세로 길이에 -2를 해서 루프를 돌면서 중간값 구하는 함수를 호출해서 나오는 값이 비교값(T) 보다 큰 경우 카운트 1씩증가후 출력
 """
 R, C = map(int, input().split())
-
 pixel = [list(map(int, input().split())) for _ in range(R)]
-# fillter_pixel = [[0] * (C - 2) for _ in range(R - 2)]
 T = int(input())
 
 
@@ -22,7 +22,7 @@ def solution(R, C, pixel, T):
 
 def getmiddle(pixel, r, c):
     """
-    미들 구하는 함수
+    중간값 구하는 함수
     """
     temp_list = []
     for i in range(r, r + 3):
