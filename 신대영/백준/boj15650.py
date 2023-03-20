@@ -2,8 +2,6 @@ from itertools import combinations
 
 n, m = int(input())
 
-arr = [0, 1, 2, 3, 4, 5]
-
 
 def gen_combinations(arr, n):
     result = []
