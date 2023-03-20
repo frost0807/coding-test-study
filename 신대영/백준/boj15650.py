@@ -21,7 +21,7 @@ def gen_combinations(arr, n):
 def solution(n, m):
     l = [i for i in range(1, n + 1)]
     # python 라이브러리 사용 조합
-    print(combinations(l, m))
+    # print(combinations(l, m))
     # python 조한 함수 구현
     print(gen_combinations(l, m))
 
