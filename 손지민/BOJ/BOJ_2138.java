@@ -1,71 +1,58 @@
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
-class Pair {
-    boolean first;
-    int second;
-    Pair(boolean first, int second) {
-        this.first = first;
-        this.second = second;
-    }
-}
 public class BOJ_2138 {
-    static void change(int[] a, int index) {
-        for (int i=index-1; i<=index+1; i++) {
-            if (0 <= i && i < a.length) {
-                a[i] = 1-a[i];
-            }
+    private static BufferedReader br;
+    private static StringTokenizer st;
+    private static int N;
+    private static int[] prevLight_A;
+    private static int[] prevLight_B;
+    private static int[] resLight;
+
+    public static void toggle(int x, int[] prevLight) {
+        if(x > 0) {
+            prevLight[x - 1] = 1 - prevLight[x - 1];
+        }
+        prevLight[x] = 1 - prevLight[x];
+        if(x < prevLight.length - 1) {
+            prevLight[x + 1] = 1 - prevLight[x + 1];
         }
     }
-    static Pair go(int[] a, int[] goal) {
-        int n = a.length;
-        int ans = 0;
-        for (int i=0; i<n-1; i++) {
-            if (a[i] != goal[i]) {
-                change(a, i+1);
-                ans += 1;
+
+    public static int makeLight(int cnt, int[] prevLight) {
+
+        for (int i = 1; i < prevLight.length; i++) {
+            if(prevLight[i - 1] != resLight[i - 1]) {
+                toggle(i, prevLight);
+                cnt += 1;
             }
         }
-        boolean ok = true;
-        for (int i=0; i<n; i++) {
-            if (a[i] != goal[i]) {
-                ok = false;
-            }
-        }
-        if (ok) {
-            return new Pair(true, ans);
-        } else {
-            return new Pair(false, ans);
-        }
+
+        return resLight[resLight.length - 1] == prevLight[prevLight.length - 1] ? cnt : Integer.MAX_VALUE;
     }
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] a = new int[n];
-        int[] goal = new int[n];
-        String s = sc.next();
-        for (int i=0; i<n; i++) {
-            a[i] = s.charAt(i)-'0';
-        }
-        s = sc.next();
-        for (int i=0; i<n; i++) {
-            goal[i] = s.charAt(i)-'0';
-        }
-        int[] b = new int[a.length];
-        System.arraycopy(a, 0, b, 0, a.length);
-        Pair p1 = go(b, goal);
-        change(a, 0);
-        Pair p2 = go(a, goal);
-        if (p2.first) {
-            p2.second += 1;
-        }
-        if (p1.first && p2.first) {
-            System.out.printf("%d\n",Math.min(p1.second, p2.second));
-        } else if (p1.first) {
-            System.out.printf("%d\n",p1.second);
-        } else if (p2.first) {
-            System.out.printf("%d\n",p2.second);
-        } else {
-            System.out.printf("-1\n");
-        }
+
+    public static int solve() {
+
+        prevLight_B = Arrays.copyOf(prevLight_A, prevLight_A.length);
+
+        // 0번째 인덱스 스위치 눌렀을 경우와 안눌렀을 경우
+        toggle(0, prevLight_A);
+        int res = Math.min(makeLight(1, prevLight_A), makeLight(0, prevLight_B));
+
+        return res == Integer.MAX_VALUE ? -1 : res;
+    }
+
+    public static void main(String[] args) throws IOException {
+        br = new BufferedReader(new InputStreamReader(System.in));
+        st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+
+        prevLight_A = Arrays.stream(br.readLine().split("")).mapToInt(Integer::parseInt).toArray();
+        resLight = Arrays.stream(br.readLine().split("")).mapToInt(Integer::parseInt).toArray();
+
+        System.out.println(solve());
     }
 }
