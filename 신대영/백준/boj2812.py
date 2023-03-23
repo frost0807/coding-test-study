@@ -4,12 +4,12 @@
 n, k = map(int, input().split())
 nums = input()
 
-result = [0]
+result = []
 
 for num in nums:
-    if result[-1] > num:
+    while result and result[-1] < int(num) and k > 0:
         del result[-1]
-    else:
-        result.append(num)
+        k -= 1
+    result.append(int(num))
 
-print(result)
+print(''.join(map(str, result)))
