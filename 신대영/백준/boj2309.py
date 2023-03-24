@@ -1,38 +1,9 @@
+from itertools import combinations
 
+l = [int(input()) for _ in range(9)]
+l.sort()
 
-def solution(cacheSize, cities):
-    cache = []
-    answer = 0
-
-    for city in cities:
-        city = city.lower()
-        if city in cache:
-            answer += 1
-            cache.remove(city)
-            cache.append(city)
-        else:
-            answer += 5
-            cache.append(city)
-            if len(cache) > cacheSize:
-                cache = cache[1:]
-
-    return answer
-
-# list 구현
-# def solution(cacheSize, cities):
-#     cache = []
-#     answer = 0
-
-#     for city in cities:
-#         city = city.lower()
-#         if city in cache:
-#             answer += 1
-#             cache.remove(city)
-#             cache.append(city)
-#         else:
-#             answer += 5
-#             cache.append(city)
-#             if len(cache) > cacheSize:
-#                 cache = cache[1:]
-
-#     return answer
+for c in list(combinations(l, 7)):
+    if sum(c) == 100:
+        print('\n'.join(map(str, c)))
+        break
