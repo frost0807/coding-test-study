@@ -50,7 +50,7 @@ public class BOJ_16954 {
                 // 벽이 움직이는 경우도 리스트 만들 필요 없이 시간으로 체크 가능 ! ! !
 //                boolean movable = true;
 //                for(Point w : wall) {
-//                    if(ny == w.y + nTime && nx == w.x) { // 이동할 칸에 벽이 올 경우 -> 해당 벽은 이동 불가
+//                    if(ny == w.y + nTime && nx == w.x) { // 이동할 칸에 벽이 올 경우 -> 해당 칸은 이동 불가
 //                        movable = false;
 //                        break;
 //                    }
