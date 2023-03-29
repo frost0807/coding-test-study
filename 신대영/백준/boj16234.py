@@ -1,5 +1,7 @@
 # bfs로 문제 풀이
 from collections import deque
+import sys
+input = sys.stdin.readline
 
 N, L, R = map(int, input().split())
 # 2차원 그래프에 담아서 처리
@@ -43,7 +45,7 @@ def bfs(x, y, visited):
 
     if count > 1:
         flag = True
-        mv_p = total / count
+        mv_p = int(total / count)
 
         for x, y in temp:
             graph[x][y] = mv_p
