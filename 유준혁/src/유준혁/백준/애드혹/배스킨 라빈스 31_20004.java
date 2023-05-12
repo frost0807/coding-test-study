@@ -1,3 +1,4 @@
+package 유준혁.백준.애드혹;
 import java.util.*;
 class Main {
 	public static void main (String[] args) {
