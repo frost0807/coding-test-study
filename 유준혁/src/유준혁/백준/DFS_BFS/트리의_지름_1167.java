@@ -1,4 +1,4 @@
-package 유준혁.백준.DFS,BFS;
+package 유준혁.백준.DFS_BFS;
 
 import java.util.*;
 public class 트리의_지름_1167 {
