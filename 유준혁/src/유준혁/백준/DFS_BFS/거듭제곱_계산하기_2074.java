@@ -1,3 +1,4 @@
+package 유준혁.백준.DFS_BFS;
 import java.util.*;
 public class 거듭제곱_계산하기_2074 {
 	public static void main (String[] args) {
